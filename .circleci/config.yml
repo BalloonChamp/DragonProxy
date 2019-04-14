@@ -2,6 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
+general:
+  artifacts:
+    - "program.jar"
 version: 2
 jobs:
   build:
@@ -30,7 +33,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: mvn dependency:go-offline
+      - run: mvn clean install
 
       - save_cache:
           paths:
